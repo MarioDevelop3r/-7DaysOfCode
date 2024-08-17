@@ -127,7 +127,7 @@ footer span:hover {
     body {
         font-size: 16px;
     }
-    
+
     header h1 {
         font-size: 2rem;
     }
@@ -139,6 +139,23 @@ footer span:hover {
 
     .reto h2 {
         font-size: 1.5rem;
+    }
+}
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .reto {
+        padding: 10px;
+    }
+
+    .reto h2 {
+        font-size: 1.2rem;
     }
 }
 
