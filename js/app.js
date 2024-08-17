@@ -82,3 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("dia2")
     .addEventListener("click", iniciarInteraccionDia2);
 });
+//  efecto haz click en el título del Día 2 para interactuar con el script
+
+const element = document.getElementById('dia2');
+
+element.addEventListener('mouseover', () => {
+  element.classList.add('active');
+});
+
+element.addEventListener('mouseout', () => {
+  element.classList.remove('active');
+});
