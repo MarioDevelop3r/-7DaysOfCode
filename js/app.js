@@ -283,14 +283,15 @@ document
             const adivinanza = parseInt(result.value, 10);
 
             if (adivinanza === numeroCorrecto) {
-              Swal.fire({
-                html: "<h2 class='glitter'>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
-                text: `El número correcto era ${numeroCorrecto}.`,
-                icon: "success",
-                confirmButtonText: "Genial!",
-              }).then(() => {
-                showGlitter(); // Llamar a la función para mostrar glitter
-              });
+                Swal.fire({
+                    html: "<h2 class='glitter'>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
+                    text: `El número correcto era ${numeroCorrecto}.`,
+                    icon: "success",
+                    confirmButtonText: "Genial!",
+                  }).then(() => {
+                    showGlitter(); // Llamar a la función para mostrar glitter
+                  });
+                  
             } else {
               intentos--;
               if (intentos > 0) {
@@ -320,54 +321,54 @@ document
 
 // Glitter effect function
 function showGlitter() {
-  const canvas = document.getElementById("glitterCanvas");
-  const ctx = canvas.getContext("2d");
+    console.log("Glitter effect started"); // Para depuración
+    const canvas = document.getElementById("glitterCanvas");
+    const ctx = canvas.getContext("2d");
 
-  // Ajustar tamaño del canvas
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+    // Ajustar tamaño del canvas
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-  const particles = [];
-  const particleCount = 100; // Número de partículas de glitter
+    const particles = [];
+    const particleCount = 100;
 
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      size: Math.random() * 5 + 2, // Tamaño aleatorio
-      speedX: (Math.random() - 0.5) * 10, // Velocidad en X
-      speedY: (Math.random() - 0.5) * 10, // Velocidad en Y
-      color: `rgba(255, 215, 0, ${Math.random()})`, // Color dorado con opacidad aleatoria
-    });
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach((p) => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      p.size *= 0.95; // Desvanecer tamaño gradualmente
-
-      if (p.size > 0.5) {
-        
-        // Dibujar solo si la partícula es suficientemente grande
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    });
-
-    if (particles.some((p) => p.size > 0.5)) {
-      requestAnimationFrame(animate);
-    } else {
-      canvas.classList.add("hidden"); // Ocultar canvas al terminar la animación
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: canvas.width / 2,
+            y: canvas.height / 2,
+            size: Math.random() * 5 + 2,
+            speedX: (Math.random() - 0.5) * 10,
+            speedY: (Math.random() - 0.5) * 10,
+            color: `rgba(255, 215, 0, ${Math.random()})`,
+        });
     }
-  }
 
-  canvas.classList.remove("hidden");
-  animate();
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        particles.forEach((p) => {
+            p.x += p.speedX;
+            p.y += p.speedY;
+            p.size *= 0.95;
+
+            if (p.size > 0.5) {
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        });
+
+        if (particles.some((p) => p.size > 0.5)) {
+            requestAnimationFrame(animate);
+        } else {
+            canvas.classList.add("hidden");
+        }
+    }
+
+    canvas.classList.remove("hidden");
+    animate();
 }
+
 
   
