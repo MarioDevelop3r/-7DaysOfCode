@@ -103,6 +103,8 @@ element.addEventListener("mouseout", () => {
 document
   .getElementById("startGame")
   .addEventListener("click", async function () {
+    //Despalzar al usuario a la sección de juego
+    document.getElementById("dia-3").scrollIntoView({ behavior: "smooth" });
     const { value: area } = await Swal.fire({
       title: "¿En qué área te gustaría trabajar?",
       input: "select",
@@ -143,7 +145,6 @@ document
       }
 
       if (frameworkOrLang) {
-
         // Mensaje final con las elecciones del usuario
 
         await Swal.fire(
@@ -202,7 +203,6 @@ document
 
         // Mensaje final con las tecnologías seleccionadas
 
-        
         if (tecnologias.length > 0) {
           await Swal.fire(
             `¡Genial! Te gustaría aprender: ${tecnologias.join(", ")}`
@@ -210,14 +210,17 @@ document
         } else {
           await Swal.fire({
             title: "¡Entendido!",
-            text: "No hay problema, puedes seguir explorando nuevas tecnologías.",
+            text:
+              "No hay problema, puedes seguir explorando nuevas tecnologías.",
             icon: "info",
           });
         }
       }
     } else {
-      await Swal.fire(
-        "Por favor, ingresa un área válida (Frontend o Backend)."
-      );
+      await Swal.fire({
+        title: "¡Entendido!",
+        text: "Por favor, ingresa un área válida (Frontend o Backend).",
+        icon: "alarm",
+      });
     }
   });
