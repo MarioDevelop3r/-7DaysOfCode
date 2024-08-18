@@ -44,12 +44,22 @@ function iniciarInteraccionDia2() {
 
   // Preguntas iniciales con validación
   let nombre = prompt("¿Cuál es tu nombre?");
+  if (!nombre) {
+    Swal.fire(`Error`, `Por favor, ingresa un nombre válido, no puede estar vacio.`, "error");
+    return;
+  }
+
   let edad;
   do {
     edad = prompt("¿Cuántos años tienes?");
+    if (edad === null) return; // Si el usuario presiona "Cancelar", se detiene la interacción
   } while (!validarNumero(edad));
 
   let lenguaje = prompt("¿Qué lenguaje de programación estás estudiando?");
+  if(!lenguaje) {
+    Swal.fire(`Error`, `Por favor, ingresa un lenguaje válido, no puede estar vacio.`, "error");
+    return;
+  }
 
   // Mensaje principal con personalización y un toque motivacional
   const mensaje = `¡Hola ${nombre}! Es increíble que a tus ${edad} años ya estés aprendiendo ${lenguaje}. ¡Sigue así, vas por buen camino!`;
@@ -61,14 +71,16 @@ function iniciarInteraccionDia2() {
     respuesta = prompt(
       `¿Te gusta estudiar ${lenguaje}? Responde con el número 1 para SÍ o 2 para NO.`
     );
-  } while (respuesta !== "1" && respuesta !== "2");
+  } while (respuesta !== "1" && respuesta !== null);
 
   if (respuesta == "1") {
     alert("¡Excelente! La constancia es clave para el éxito. ¡Sigue adelante!");
-  } else {
+  } else if (respuesta === "2") {
     alert(
       "No te desanimes, explorar otros lenguajes también puede ser muy enriquecedor."
     );
+  } else {
+    alert("¡Gracias por participar! 🚀");
   }
 
   // Mensaje final motivacional
@@ -83,7 +95,9 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("dia2")
     .addEventListener("click", iniciarInteraccionDia2);
+    
 });
+
 //  efecto haz click en el título del Día 2 para interactuar con el script
 
 const element = document.getElementById("dia2");
@@ -232,7 +246,7 @@ document
 
 document
   .getElementById("startGameDay4")
-  .addEventListener("click", async function () {
+  .addEventListener("click", function () {
     Swal.fire({
       title: "¡Bienvenido al Día 4!",
       text:
@@ -258,7 +272,7 @@ document
           preConfirm: (value) => {
             if (value === "" || isNaN(value) || value < 0 || value > 10) {
               Swal.showValidationMessage(
-                "Por favor, ingresa un número válido entre el  0 y el 10."
+                "Por favor, ingresa un número válido entre el 0 y el 10."
               );
             } else {
               return value;
@@ -270,10 +284,12 @@ document
 
             if (adivinanza === numeroCorrecto) {
               Swal.fire({
-                html:"<h2 class=`glitter`>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
+                html: "<h2 class='glitter'>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
                 text: `El número correcto era ${numeroCorrecto}.`,
                 icon: "success",
                 confirmButtonText: "Genial!",
+              }).then(() => {
+                showGlitter(); // Llamar a la función para mostrar glitter
               });
             } else {
               intentos--;
@@ -301,3 +317,57 @@ document
       adivinar();
     });
   });
+
+// Glitter effect function
+function showGlitter() {
+  const canvas = document.getElementById("glitterCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Ajustar tamaño del canvas
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const particleCount = 100; // Número de partículas de glitter
+
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+      size: Math.random() * 5 + 2, // Tamaño aleatorio
+      speedX: (Math.random() - 0.5) * 10, // Velocidad en X
+      speedY: (Math.random() - 0.5) * 10, // Velocidad en Y
+      color: `rgba(255, 215, 0, ${Math.random()})`, // Color dorado con opacidad aleatoria
+    });
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    particles.forEach((p) => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+      p.size *= 0.95; // Desvanecer tamaño gradualmente
+
+      if (p.size > 0.5) {
+        
+        // Dibujar solo si la partícula es suficientemente grande
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    });
+
+    if (particles.some((p) => p.size > 0.5)) {
+      requestAnimationFrame(animate);
+    } else {
+      canvas.classList.add("hidden"); // Ocultar canvas al terminar la animación
+    }
+  }
+
+  canvas.classList.remove("hidden");
+  animate();
+}
+
+  
