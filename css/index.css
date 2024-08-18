@@ -41,7 +41,7 @@ main {
 }
 
 .reto:hover{
-    translate: 0.5s;
+    transition: 0.5s;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
@@ -107,7 +107,7 @@ main {
   
   #dia2.active {
     color: #007acc;
-    transform: scale(1.1.5rem);
+    transform: scale(1.1rem);
   }
 
 /* Estilos para el pie de página */
