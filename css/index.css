@@ -41,7 +41,7 @@ main {
 }
 
 .reto:hover{
-    translate: 0.5s;
+    transition: 0.5s;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
 }
@@ -101,6 +101,14 @@ main {
 #dia2 {
     cursor: pointer;
 }
+#dia2 {
+    transition: all 0.5s ease-in-out;
+  }
+  
+  #dia2.active {
+    color: #007acc;
+    transform: scale(1.1rem);
+  }
 
 /* Estilos para el pie de página */
 footer {
@@ -122,6 +130,20 @@ footer span {
 }
 footer span:hover {
     color: #050606;
+}
+
+.reto button {
+    background-color: #007acc;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+.reto button:hover {
+    background-color: #005f7f;
 }
 
 /* Estilos responsivos */
