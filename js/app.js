@@ -208,9 +208,11 @@ document
             `¡Genial! Te gustaría aprender: ${tecnologias.join(", ")}`
           );
         } else {
-          await Swal.fire(
-            "¡Entendido! Puedes investigar más adelante sobre nuevas tecnologías."
-          );
+          await Swal.fire({
+            title: "¡Entendido!",
+            text: "No hay problema, puedes seguir explorando nuevas tecnologías.",
+            icon: "info",
+          });
         }
       }
     } else {
