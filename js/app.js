@@ -116,6 +116,8 @@ document
 
     if (area) {
       let frameworkOrLang;
+      // Preguntas adicionales según el área seleccionada
+
       if (area === "Frontend") {
         ({ value: frameworkOrLang } = await Swal.fire({
           title: "¿Qué framework de frontend te gustaría aprender?",
@@ -141,6 +143,9 @@ document
       }
 
       if (frameworkOrLang) {
+
+        // Mensaje final con las elecciones del usuario
+
         await Swal.fire(
           `¡Genial! Te gustaría trabajar en ${area} y aprender ${frameworkOrLang}.`
         );
@@ -168,6 +173,8 @@ document
         let tecnologias = [];
         let otraTecnologia = true;
 
+        // mientras el usuario quiera agregar más tecnologías
+
         while (otraTecnologia) {
           const { value: tecnologia } = await Swal.fire({
             title: "Ingresa una tecnología que te gustaría aprender",
@@ -193,6 +200,9 @@ document
           }).then((result) => result.value);
         }
 
+        // Mensaje final con las tecnologías seleccionadas
+
+        
         if (tecnologias.length > 0) {
           await Swal.fire(
             `¡Genial! Te gustaría aprender: ${tecnologias.join(", ")}`
