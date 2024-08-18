@@ -22,7 +22,13 @@ La aplicación creada es una página web que muestra los retos completados duran
 
 - Se desarrolló una funcionalidad interactiva que realiza preguntas al usuario, personaliza la experiencia con base en las respuestas, y proporciona mensajes motivacionales.
 
-### Días 3-7
+### Día 3
+
+- Se creó una funcionalidad interactiva donde el usuario puede seleccionar áreas de trabajo y tecnologías, con respuestas personalizadas basadas en la elección del usuario.
+
+### Día 4
+
+- Se implementó un juego de adivinanza de números con efectos visuales de glitter usando `SweetAlert2`. Los usuarios tienen 3 intentos para adivinar el número correcto.
 
 - **(En desarrollo)**: Secciones planeadas para futuros retos, que incluirán funcionalidades adicionales como manejo de arrays, manipulación del DOM, y más.
 
