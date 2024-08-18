@@ -105,7 +105,7 @@ document
   .addEventListener("click", async function () {
     //Despalzar al usuario a la sección de juego
     document.getElementById("dia-3").scrollIntoView({ behavior: "smooth" });
-    
+
     const { value: area } = await Swal.fire({
       title: "¿En qué área te gustaría trabajar?",
       input: "select",
@@ -224,4 +224,80 @@ document
         icon: "alarm",
       });
     }
+  });
+
+// dia 4
+
+// Función que contiene la lógica del Día 4
+
+document
+  .getElementById("startGameDay4")
+  .addEventListener("click", async function () {
+    Swal.fire({
+      title: "¡Bienvenido al Día 4!",
+      text:
+        "¡Vamos a jugar un juego de adivinanzas! 🎉. Tienes solo 3 intentos.",
+      icon: "question",
+      confirmButtonText: "¡Comencemos!",
+    }).then(() => {
+      const numeroCorrecto = Math.floor(Math.random() * 11); // Número aleatorio entre 0 y 10
+      console.log(numeroCorrecto);
+      let intentos = 3;
+
+      function adivinar() {
+        Swal.fire({
+          title: `Intento ${4 - intentos}`,
+          input: "number",
+          inputAttributes: {
+            min: 0,
+            max: 10,
+          },
+          showCancelButton: true,
+          confirmButtonText: "Adivinar",
+          cancelButtonText: "Salir del juego",
+          preConfirm: (value) => {
+            if (value === "" || isNaN(value) || value < 0 || value > 10) {
+              Swal.showValidationMessage(
+                "Por favor, ingresa un número válido entre el  0 y el 10."
+              );
+            } else {
+              return value;
+            }
+          },
+        }).then((result) => {
+          if (result.isConfirmed) {
+            const adivinanza = parseInt(result.value, 10);
+
+            if (adivinanza === numeroCorrecto) {
+              Swal.fire({
+                html:"<h2 class=`glitter`>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
+                text: `El número correcto era ${numeroCorrecto}.`,
+                icon: "success",
+                confirmButtonText: "Genial!",
+              });
+            } else {
+              intentos--;
+              if (intentos > 0) {
+                Swal.fire({
+                  title: "¡Incorrecto!",
+                  text: "¡Sigamos intentando! 🚀",
+                  icon: "error",
+                  confirmButtonText: "Intentar de nuevo",
+                }).then(() => {
+                  adivinar();
+                });
+              } else {
+                Swal.fire({
+                  title: "¡Lo siento!",
+                  text: `El número correcto era ${numeroCorrecto}.`,
+                  icon: "error",
+                  confirmButtonText: "Entendido",
+                });
+              }
+            }
+          }
+        });
+      }
+      adivinar();
+    });
   });
