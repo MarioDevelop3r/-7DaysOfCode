@@ -105,6 +105,7 @@ document
   .addEventListener("click", async function () {
     //Despalzar al usuario a la sección de juego
     document.getElementById("dia-3").scrollIntoView({ behavior: "smooth" });
+    
     const { value: area } = await Swal.fire({
       title: "¿En qué área te gustaría trabajar?",
       input: "select",
