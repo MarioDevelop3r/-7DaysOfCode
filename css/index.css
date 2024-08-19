@@ -239,6 +239,9 @@ footer span:hover {
     .reto h2 {
         font-size: 1.5rem;
     }
+    li {
+        font-size: 1rem;
+    }
 }
 @media (max-width: 480px) {
     body {
