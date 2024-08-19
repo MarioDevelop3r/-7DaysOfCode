@@ -429,5 +429,8 @@ document.getElementById("startDia5").addEventListener("click", function () {
    <p>Dulces: ${sweets.join(", ")}</p>
    <p>Otros: ${others.join(", ")}</p>
    `;
-  document.getElementById("shopping-list-output").innerHTML = output;
+
+  let outputContainer = document.getElementById("shopping-list-output");
+  outputContainer.innerHTML = output;
+  outputContainer.style.display = "block"; // Mostrar el contenedor de la lista de compras una vez que se haya generado
 });
