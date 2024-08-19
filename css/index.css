@@ -57,6 +57,10 @@ main {
     font-size: 1.8rem;
     color: #569cd6;
 }
+.reto button { // mejora visual al centrarlo en mobile
+margin-left: auto;
+margin-right: auto;
+}
 
 .reto p, .reto li {
     font-size: 1.2rem;
