@@ -12,6 +12,7 @@ La aplicación creada es una página web que muestra los retos completados duran
 - **CSS3**: Estilos visuales y diseño responsive.
 - **JavaScript**: Lógica e interactividad del usuario.
 - **SweetAlert2**: Mejora de la interfaz de usuario con alertas personalizadas.
+- **canvas**: Mejora de la interfaz se agrega confetti al adivinar el numero correcto.
 
 ## Funcionalidades
 
