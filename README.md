@@ -11,6 +11,7 @@ La aplicación creada es una página web que muestra los retos completados duran
 - **HTML5**: Estructura del contenido.
 - **CSS3**: Estilos visuales y diseño responsive.
 - **JavaScript**: Lógica e interactividad del usuario.
+- **SweetAlert2**: Mejora de la interfaz de usuario con alertas personalizadas.
 
 ## Funcionalidades
 
@@ -28,9 +29,15 @@ La aplicación creada es una página web que muestra los retos completados duran
 
 ### Día 4
 
-- Se implementó un juego de adivinanza de números con efectos visuales de glitter usando `SweetAlert2`. Los usuarios tienen 3 intentos para adivinar el número correcto.
+- Se implementó un juego de adivinanza de números con efectos visuales de glitter usando `SweetAlert2` y libreria canvas confetti. Los usuarios tienen 3 intentos para adivinar el número correcto.
 
-- **(En desarrollo)**: Secciones planeadas para futuros retos, que incluirán funcionalidades adicionales como manejo de arrays, manipulación del DOM, y más.
+### Día 5
+
+- Se desarrolló una funcionalidad para crear una lista de compras interactiva. Los usuarios pueden agregar alimentos a la lista, categorizarlos en frutas, lácteos, congelados, dulces u otros, y visualizar la lista completa al finalizar.
+
+### Días 6-7
+
+- **(En desarrollo)**
 
 ## Uso
 
