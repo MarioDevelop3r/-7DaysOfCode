@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="/css/index.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <title>#7DaysOfCode</title>
 </head>
 
@@ -83,10 +81,35 @@
         <!--  dia 4 -->
         <section class="reto" id="dia-4">
             <h2>Día 4</h2>
-            <p>Hoy Jugaremos un juego clasico: <span class="">!Adivina el número¡</span> tienes 3 intentos para adivinar un
+            <p class="glitterCanvas">Hoy Jugaremos un juego clasico: <span class="">!Adivina el número¡</span> tienes 3
+                intentos para adivinar un
                 número entre el 1 y el 10.</p>
             <button id="startGameDay4">Comenzar el juego</button>
             <canvas id="glitterCanvas" class="hidden"></canvas>
+        </section>
+
+
+        <!-- dia 5 -->
+
+
+        <section class="reto" id="dia-5">
+            <h2>Día 5: Organizador de listas de Compras</h2>
+            <p>Hoy vamos a crear un programa que te ayude a organizar tu lista de compras por categorias.</p>
+            <div class="instructions">
+                <h3>Instrucciones:</h3>
+                <ol>
+                    <li>El programa preguntará se deseas agregar un alimento a una lista de compras.</li>
+                    <li>Si respondes "Si", podrás ingresar el nombre del alimento y la categoria a la que pertenece.
+                    </li>
+                    <li>Las categorias predefinidas son: Frutas, Lacteos, Congelados, dulces ente otras. </li>
+                    <li>Una vez que termines de agregar alimentos, se mostrará la lista compelta organizada por
+                        categorias. </li>
+                </ol>
+            </div>
+
+            <button id="startDia5">Iniciar desafio día 5</button>
+            <div id="shopping-list-output" class="output-container"></div>
+
         </section>
 
         <!-- Secciones para los días restantes -->
