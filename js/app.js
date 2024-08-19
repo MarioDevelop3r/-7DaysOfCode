@@ -379,58 +379,101 @@ function showGlitter() {
 
 // Función que contiene la lógica del Día 5
 
-document.getElementById("startDia5").addEventListener("click", function () {
-  let fruits = [];
-  let dairy = [];
-  let frozen = [];
-  let sweets = [];
-  let others = [];
+document
+  .getElementById("startDia5")
+  .addEventListener("click", async function () {
+    let fruits = [];
+    let dairy = [];
+    let frozen = [];
+    let sweets = [];
+    let others = [];
 
-  while (true) {
-    let addMore = prompt("Deseas agregar un producto a la lista? (S/N)");
-    if (
-      addMore === "no" ||
-      addMore === "No" ||
-      addMore === "n" ||
-      addMore === "N"
-    ) {
-      break;
-    }
-    let foodItem = prompt("Qué producto deseas agregar a la lista?");
-    let category = prompt(
-      "A qué categoría pertenece el producto? (Frutas, Lácteos, Congelados, Dulces, Otros)"
-    ).toLowerCase();
-    switch (category) {
-      case "frutas":
-        fruits.push(foodItem);
-        break;
-      case "lácteos":
-        dairy.push(foodItem);
-        break;
-      case "congelados":
-        frozen.push(foodItem);
-        break;
-      case "dulces":
-        sweets.push(foodItem);
-        break;
-      case "otros":
-        others.push(foodItem);
-        break;
-      default:
-        alert("Por favor, ingresa una categoría válida.");
-        break;
-    }
-  }
-  let output = `
-   <h3>Lista de Compras:</h3>
-   <p>Frutas: ${fruits.join(", ")}</p>
-   <p>Lácteos: ${dairy.join(", ")}</p>
-   <p>Congelados: ${frozen.join(", ")}</p>
-   <p>Dulces: ${sweets.join(", ")}</p>
-   <p>Otros: ${others.join(", ")}</p>
-   `;
+    while (true) {
+      const { value: addMore } = await Swal.fire({
+        title: "¿Deseas agregar un alimento a tu lista de compras?",
+        input: "radio",
+        inputOptions: {
+          sí: "Sí",
+          no: "No",
+        },
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡Necesitas elegir una opción!";
+          }
+        },
+        showCancelButton: true,
+      });
 
-  let outputContainer = document.getElementById("shopping-list-output");
-  outputContainer.innerHTML = output;
-  outputContainer.style.display = "block"; // Mostrar el contenedor de la lista de compras una vez que se haya generado
-});
+      if (addMore === "no" || !addMore) break;
+
+      const { value: foodItem } = await Swal.fire({
+        title: "¿Qué alimento deseas agregar?",
+        input: "text",
+        inputPlaceholder: "Ingresa el nombre del alimento",
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡El nombre del alimento no puede estar vacío!";
+          }
+        },
+        showCancelButton: true,
+      });
+
+      if (!foodItem) continue; // Si el usuario cancela, pasa al siguiente ciclo
+
+      const { value: category } = await Swal.fire({
+        title: "¿En qué categoría se encaja?",
+        input: "select",
+        inputOptions: {
+          frutas: "Frutas",
+          lácteos: "Lácteos",
+          congelados: "Congelados",
+          dulces: "Dulces",
+          otros: "Otros",
+        },
+        inputPlaceholder: "Selecciona una categoría",
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡Debes seleccionar una categoría!";
+          }
+        },
+        showCancelButton: true,
+      });
+
+      if (!category) continue; // Si el usuario cancela, pasa al siguiente ciclo
+
+      switch (category) {
+        case "frutas":
+          fruits.push(foodItem);
+          break;
+        case "lácteos":
+          dairy.push(foodItem);
+          break;
+        case "congelados":
+          frozen.push(foodItem);
+          break;
+        case "dulces":
+          sweets.push(foodItem);
+          break;
+        default:
+          others.push(foodItem);
+      }
+    }
+
+    let output = `
+      <h3>Lista de Compras:</h3>
+      <p>Frutas: ${fruits.join(", ")}</p>
+      <p>Lácteos: ${dairy.join(", ")}</p>
+      <p>Congelados: ${frozen.join(", ")}</p>
+      <p>Dulces: ${sweets.join(", ")}</p>
+      <p>Otros: ${others.join(", ")}</p>
+  `;
+
+    let outputContainer = document.getElementById("shopping-list-output");
+    outputContainer.innerHTML = output;
+
+    await Swal.fire({
+      title: "¡Lista de Compras Generada!",
+      html: output,
+      confirmButtonText: "OK",
+    });
+  });
