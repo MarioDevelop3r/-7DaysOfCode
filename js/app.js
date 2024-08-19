@@ -45,7 +45,11 @@ function iniciarInteraccionDia2() {
   // Preguntas iniciales con validación
   let nombre = prompt("¿Cuál es tu nombre?");
   if (!nombre) {
-    Swal.fire(`Error`, `Por favor, ingresa un nombre válido, no puede estar vacio.`, "error");
+    Swal.fire(
+      `Error`,
+      `Por favor, ingresa un nombre válido, no puede estar vacio.`,
+      "error"
+    );
     return;
   }
 
@@ -56,8 +60,12 @@ function iniciarInteraccionDia2() {
   } while (!validarNumero(edad));
 
   let lenguaje = prompt("¿Qué lenguaje de programación estás estudiando?");
-  if(!lenguaje) {
-    Swal.fire(`Error`, `Por favor, ingresa un lenguaje válido, no puede estar vacio.`, "error");
+  if (!lenguaje) {
+    Swal.fire(
+      `Error`,
+      `Por favor, ingresa un lenguaje válido, no puede estar vacio.`,
+      "error"
+    );
     return;
   }
 
@@ -95,7 +103,6 @@ document.addEventListener("DOMContentLoaded", function () {
   document
     .getElementById("dia2")
     .addEventListener("click", iniciarInteraccionDia2);
-    
 });
 
 //  efecto haz click en el título del Día 2 para interactuar con el script
@@ -244,131 +251,192 @@ document
 
 // Función que contiene la lógica del Día 4
 
-document
-  .getElementById("startGameDay4")
-  .addEventListener("click", function () {
-    Swal.fire({
-      title: "¡Bienvenido al Día 4!",
-      text:
-        "¡Vamos a jugar un juego de adivinanzas! 🎉. Tienes solo 3 intentos.",
-      icon: "question",
-      confirmButtonText: "¡Comencemos!",
-    }).then(() => {
-      const numeroCorrecto = Math.floor(Math.random() * 11); // Número aleatorio entre 0 y 10
-      console.log(numeroCorrecto);
-      let intentos = 3;
+document.getElementById("startGameDay4").addEventListener("click", function () {
+  Swal.fire({
+    title: "¡Bienvenido al Día 4!",
+    text: "¡Vamos a jugar un juego de adivinanzas! 🎉. Tienes solo 3 intentos.",
+    icon: "question",
+    confirmButtonText: "¡Comencemos!",
+  }).then(() => {
+    const numeroCorrecto = Math.floor(Math.random() * 11); // Número aleatorio entre 0 y 10
+    console.log(numeroCorrecto);
+    let intentos = 3;
 
-      function adivinar() {
-        Swal.fire({
-          title: `Intento ${4 - intentos}`,
-          input: "number",
-          inputAttributes: {
-            min: 0,
-            max: 10,
-          },
-          showCancelButton: true,
-          confirmButtonText: "Adivinar",
-          cancelButtonText: "Salir del juego",
-          preConfirm: (value) => {
-            if (value === "" || isNaN(value) || value < 0 || value > 10) {
-              Swal.showValidationMessage(
-                "Por favor, ingresa un número válido entre el 0 y el 10."
-              );
-            } else {
-              return value;
-            }
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            const adivinanza = parseInt(result.value, 10);
+    function adivinar() {
+      Swal.fire({
+        title: `Intento ${4 - intentos}`,
+        input: "number",
+        inputAttributes: {
+          min: 0,
+          max: 10,
+        },
+        showCancelButton: true,
+        confirmButtonText: "Adivinar",
+        cancelButtonText: "Salir del juego",
+        preConfirm: (value) => {
+          if (value === "" || isNaN(value) || value < 0 || value > 10) {
+            Swal.showValidationMessage(
+              "Por favor, ingresa un número válido entre el 0 y el 10."
+            );
+          } else {
+            return value;
+          }
+        },
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const adivinanza = parseInt(result.value, 10);
 
-            if (adivinanza === numeroCorrecto) {
-                Swal.fire({
-                    html: "<h2 class='glitter'>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
-                    text: `El número correcto era ${numeroCorrecto}.`,
-                    icon: "success",
-                    confirmButtonText: "Genial!",
-                  }).then(() => {
-                    showGlitter(); // Llamar a la función para mostrar glitter
-                  });
-                  
+          if (adivinanza === numeroCorrecto) {
+            Swal.fire({
+              html:
+                "<h2 class='glitter'>¡Felicidades! ¡Adivinaste el número correcto!</h2>",
+              text: `El número correcto era ${numeroCorrecto}.`,
+              icon: "success",
+              confirmButtonText: "Genial!",
+            }).then(() => {
+              showGlitter(); // Llamar a la función para mostrar glitter
+            });
+          } else {
+            intentos--;
+            if (intentos > 0) {
+              Swal.fire({
+                title: "¡Incorrecto!",
+                text: "¡Sigamos intentando! 🚀",
+                icon: "error",
+                confirmButtonText: "Intentar de nuevo",
+              }).then(() => {
+                adivinar();
+              });
             } else {
-              intentos--;
-              if (intentos > 0) {
-                Swal.fire({
-                  title: "¡Incorrecto!",
-                  text: "¡Sigamos intentando! 🚀",
-                  icon: "error",
-                  confirmButtonText: "Intentar de nuevo",
-                }).then(() => {
-                  adivinar();
-                });
-              } else {
-                Swal.fire({
-                  title: "¡Lo siento!",
-                  text: `El número correcto era ${numeroCorrecto}.`,
-                  icon: "error",
-                  confirmButtonText: "Entendido",
-                });
-              }
+              Swal.fire({
+                title: "¡Lo siento!",
+                text: `El número correcto era ${numeroCorrecto}.`,
+                icon: "error",
+                confirmButtonText: "Entendido",
+              });
             }
           }
-        });
-      }
-      adivinar();
-    });
+        }
+      });
+    }
+    adivinar();
   });
+});
 
 // Glitter effect function
+
 function showGlitter() {
-    console.log("Glitter effect started"); // Para depuración
-    const canvas = document.getElementById("glitterCanvas");
-    const ctx = canvas.getContext("2d");
+  console.log("Glitter effect started"); // Para depuración
 
-    // Ajustar tamaño del canvas
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    const particles = [];
-    const particleCount = 100;
-
-    for (let i = 0; i < particleCount; i++) {
-        particles.push({
-            x: canvas.width / 2,
-            y: canvas.height / 2,
-            size: Math.random() * 5 + 2,
-            speedX: (Math.random() - 0.5) * 10,
-            speedY: (Math.random() - 0.5) * 10,
-            color: `rgba(255, 215, 0, ${Math.random()})`,
-        });
-    }
-
-    function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        particles.forEach((p) => {
-            p.x += p.speedX;
-            p.y += p.speedY;
-            p.size *= 0.95;
-
-            if (p.size > 0.5) {
-                ctx.fillStyle = p.color;
-                ctx.beginPath();
-                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        });
-
-        if (particles.some((p) => p.size > 0.5)) {
-            requestAnimationFrame(animate);
-        } else {
-            canvas.classList.add("hidden");
-        }
-    }
-
-    canvas.classList.remove("hidden");
-    animate();
+  confetti({
+    particleCount: 100,
+    spread: 160,
+    origin: { y: 0.6 },
+    colors: ['#ffcc00', '#ff9900', '#ff6600'],
+    shapes: ['circle'], //cambiar la forma a círculo para simular glitter
+    scalar: 0.6 // Escala para hacer las partículas más pequeñas
+  });
 }
 
+// dia 5
 
-  
+// Función que contiene la lógica del Día 5
+
+document
+  .getElementById("startDia5")
+  .addEventListener("click", async function () {
+    let fruits = [];
+    let dairy = [];
+    let frozen = [];
+    let sweets = [];
+    let others = [];
+
+    while (true) {
+      const { value: addMore } = await Swal.fire({
+        title: "¿Deseas agregar un alimento a tu lista de compras?",
+        input: "radio",
+        inputOptions: {
+          sí: "Sí",
+          no: "No",
+        },
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡Necesitas elegir una opción!";
+          }
+        },
+        showCancelButton: true,
+      });
+
+      if (addMore === "no" || !addMore) break;
+
+      const { value: foodItem } = await Swal.fire({
+        title: "¿Qué alimento deseas agregar?",
+        input: "text",
+        inputPlaceholder: "Ingresa el nombre del alimento",
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡El nombre del alimento no puede estar vacío!";
+          }
+        },
+        showCancelButton: true,
+      });
+
+      if (!foodItem) continue; // Si el usuario cancela, pasa al siguiente ciclo
+
+      const { value: category } = await Swal.fire({
+        title: "¿En qué categoría se encaja?",
+        input: "select",
+        inputOptions: {
+          frutas: "Frutas",
+          lácteos: "Lácteos",
+          congelados: "Congelados",
+          dulces: "Dulces",
+          otros: "Otros",
+        },
+        inputPlaceholder: "Selecciona una categoría",
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡Debes seleccionar una categoría!";
+          }
+        },
+        showCancelButton: true,
+      });
+
+      if (!category) continue; // Si el usuario cancela, pasa al siguiente ciclo
+
+      switch (category) {
+        case "frutas":
+          fruits.push(foodItem);
+          break;
+        case "lácteos":
+          dairy.push(foodItem);
+          break;
+        case "congelados":
+          frozen.push(foodItem);
+          break;
+        case "dulces":
+          sweets.push(foodItem);
+          break;
+        default:
+          others.push(foodItem);
+      }
+    }
+
+    let output = `
+      <h3>Lista de Compras:</h3>
+      <p>Frutas: ${fruits.join(", ")}</p>
+      <p>Lácteos: ${dairy.join(", ")}</p>
+      <p>Congelados: ${frozen.join(", ")}</p>
+      <p>Dulces: ${sweets.join(", ")}</p>
+      <p>Otros: ${others.join(", ")}</p>
+  `;
+
+    let outputContainer = document.getElementById("shopping-list-output");
+    outputContainer.innerHTML = output;
+
+    await Swal.fire({
+      title: "¡Lista de Compras Generada!",
+      html: output,
+      confirmButtonText: "OK",
+    });
+  });

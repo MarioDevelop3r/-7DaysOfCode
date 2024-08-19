@@ -165,7 +165,57 @@ footer span:hover {
     top: 0;
     left: 0;
   }
-  
+
+
+  /* dia 5 */
+
+#dia-5 .h2 {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.intructions{
+    margin-bottom: 20px;
+}
+
+.intructions h3 {
+    font-size: 30px;
+    color: #555;
+
+}
+.intructions ol {
+    padding-left: 20px;
+    color: #444;
+}
+.startDia5 {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.startDia5:hover {
+    background-color: #0056b3;
+}
+
+.output-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e2e2e2;
+    border-radius: 5px;
+    color: #333;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.output-container p {
+    color:#252526
+}
 
 
 
@@ -190,11 +240,9 @@ footer span:hover {
     .reto h2 {
         font-size: 1.5rem;
     }
-
-    .reto button { // mejora visual al centrarlo en mobile
-     margin-left: auto;
-     margin-right: auto;
-     }
+    li {
+        font-size: 1rem;
+    }
 }
 @media (max-width: 480px) {
     body {
