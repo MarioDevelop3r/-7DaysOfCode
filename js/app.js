@@ -324,55 +324,18 @@ document.getElementById("startGameDay4").addEventListener("click", function () {
 });
 
 // Glitter effect function
+
 function showGlitter() {
   console.log("Glitter effect started"); // Para depuración
 
-  const canvas = document.getElementById("glitterCanvas");
-  const ctx = canvas.getContext("2d");
-
-  // Ajustar tamaño del canvas
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-
-  const particles = [];
-  const particleCount = 100;
-
-  for (let i = 0; i < particleCount; i++) {
-    particles.push({
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      size: Math.random() * 5 + 2,
-      speedX: (Math.random() - 0.5) * 10,
-      speedY: (Math.random() - 0.5) * 10,
-      color: `rgba(255, 215, 0, ${Math.random()})`,
-    });
-  }
-
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    particles.forEach((p) => {
-      p.x += p.speedX;
-      p.y += p.speedY;
-      p.size *= 0.95;
-
-      if (p.size > 0.5) {
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    });
-
-    if (particles.some((p) => p.size > 0.5)) {
-      requestAnimationFrame(animate);
-    } else {
-      canvas.classList.add("hidden");
-    }
-  }
-
-  canvas.classList.remove("hidden");
-  animate();
+  confetti({
+    particleCount: 100,
+    spread: 160,
+    origin: { y: 0.6 },
+    colors: ['#ffcc00', '#ff9900', '#ff6600'],
+    shapes: ['circle'], //cambiar la forma a círculo para simular glitter
+    scalar: 0.6 // Escala para hacer las partículas más pequeñas
+  });
 }
 
 // dia 5
