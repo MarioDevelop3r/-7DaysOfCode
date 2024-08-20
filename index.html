@@ -54,6 +54,34 @@
                 </code>
             </pre>
 
+            <!-- mostar solución b -->
+             
+            <button id="showSolution" onclick="toggleSolution()">Mostrar Solución Simplificada</button>
+  
+            <pre id="solution" style="display: none;">
+              <code>
+          <span class="keyword">const</span> pares = [
+            { <span class="keyword">numero</span>: <span class="number">1</span>, <span class="keyword">string</span>: <span class="string">"1"</span> },
+            { <span class="keyword">numero</span>: <span class="number">30</span>, <span class="keyword">string</span>: <span class="string">"30"</span> },
+            { <span class="keyword">numero</span>: <span class="number">10</span>, <span class="keyword">string</span>: <span class="string">"10"</span> }
+          ];
+          
+          pares.<span class="keyword">forEach</span>(({ <span class="keyword">numero</span>, <span class="keyword">string</span> }) => {
+            console.<span class="keyword">log</span>(
+              <span class="keyword">numero</span> <span class="operator">==</span> <span class="keyword">string</span>
+                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor, pero tipos diferentes`</span>
+                : <span class="string">`Las variables ${numero} y "${string}" no tienen el mismo valor`</span>
+            );
+          
+            console.<span class="keyword">log</span>(
+              <span class="keyword">numero</span> <span class="operator">===</span> <span class="keyword">string</span>
+                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor y el mismo tipo`</span>
+                : <span class="string">`Las variables ${numero} y "${string}" no tienen el mismo tipo`</span>
+            );
+          });
+              </code>
+            </pre>
+
             <h2>Explicación de la solución</h2>
             <li>En el primer y tercer bloque, se utiliza == para comparar el valor independientemente del tipo, lo que
                 refleja que las variables tienen el mismo valor pero tipos diferentes.</li>

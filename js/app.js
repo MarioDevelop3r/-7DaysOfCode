@@ -33,6 +33,39 @@ if (numeroDiez == stringDiez) {
   console.log("Las variables numeroDiez y stringDiez no tienen el mismo valor");
 }
 
+// mostar solución b
+function toggleSolution() {
+  const solution = document.getElementById("solution");
+  solution.style.display = solution.style.display === 'none' ? 'block' : 'none';
+
+  //fin mostrar solución b
+}
+
+// constante que contiene los pares de números y strings
+const pares = [
+  { numero: 1, String: "1" },
+  { numero: 30, String: "30" },
+  { numero: 10, String: "10" },
+];
+
+// Iterar sobre cada par de números y strings
+
+pares.forEach(({ numero, String }) => {
+  console.log(
+    numero == String
+      ? `Las variables ${numero} y ${String} tienen el mismo valor, pero tipos diferentes`
+      : `Las variables ${numero} y ${String} no tienen el mismo valor`
+  );
+  // Comparar si los valores son iguales y del mismo tipo
+  console.log(
+    numero === String
+      ? `Las variables ${numero} y ${String} tienen el mismo valor y el mismo tipo`
+      : `Las variables ${numero} y ${String} no tienen el mismo tipo`
+  );
+});
+
+//fin solución b
+
 // dia 2
 
 // Función que contiene la lógica del Día 2
