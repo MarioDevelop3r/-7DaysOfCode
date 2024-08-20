@@ -342,9 +342,12 @@ function showGlitter() {
 
 // Función que contiene la lógica del Día 5
 
+// Asociar la función al evento click en el botón "Comenzar" del Día 5
 document
   .getElementById("startDia5")
   .addEventListener("click", async function () {
+    // Crear listas vacías para cada categoría
+
     let fruits = [];
     let dairy = [];
     let frozen = [];
@@ -352,6 +355,7 @@ document
     let others = [];
 
     while (true) {
+      // Bucle para agregar alimentos a la lista de compras
       const { value: alimento } = await Swal.fire({
         title: "Agregar un alimento a tu lista de compras",
         text: "Agrega el nombre de el alimento:",
@@ -362,13 +366,14 @@ document
         confirmButtonText: "Agregar",
         inputValidator: (value) => {
           if (!value) {
-            return "¡El nombre del alimento no puede estar vacío!";
+            return "¡El nombre del alimento no puede estar vacío!"; // Validación para que el campo no esté vacío
           }
         },
       });
       if (!alimento) break; // Si el usuario cancela, se termina el bucle
 
       const { value: categoria } = await Swal.fire({
+        // Seleccionar la categoría del alimento
         title: "Categoria del alimento",
         text: "Selecciona la categoria del alimento:",
         input: "select",
@@ -379,10 +384,12 @@ document
           sweets: "Dulces",
           others: "Otros",
         },
-        showCancelButton: true,
+        showCancelButton: true, // Mostrar botón de cancelar
       });
 
       if (!categoria) break; // Si el usuario cancela, se termina el bucle
+
+      //bucle para agregar el alimento a la categoría correspondiente
 
       switch (categoria) {
         case "fruits":
@@ -402,6 +409,7 @@ document
           break;
       }
     }
+    // Generar la lista de compras
 
     let output = "<h3>Lista de Compras:</h3> ";
     output += fruits.length ? `<p>Frutas: ${fruits.join(", ")}</p>` : "";
@@ -411,6 +419,8 @@ document
     output += others.length ? `<p>Otros: ${others.join(", ")}</p>` : "";
     let outputContainer = document.getElementById("shopping-list-output");
     outputContainer.innerHTML = output;
+
+    // Mostrar la lista de compras en un modal
 
     await Swal.fire({
       title: "¡Lista de Compras Generada!",
