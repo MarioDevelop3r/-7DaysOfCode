@@ -33,6 +33,39 @@ if (numeroDiez == stringDiez) {
   console.log("Las variables numeroDiez y stringDiez no tienen el mismo valor");
 }
 
+// mostar solución b
+function toggleSolution() {
+  const solution = document.getElementById("solution");
+  solution.style.display = solution.style.display === "none" ? "block" : "none";
+
+  //fin mostrar solución b
+}
+
+// constante que contiene los pares de números y strings
+const pares = [
+  { numero: 1, String: "1" },
+  { numero: 30, String: "30" },
+  { numero: 10, String: "10" },
+];
+
+// Iterar sobre cada par de números y strings
+
+pares.forEach(({ numero, String }) => {
+  console.log(
+    numero == String
+      ? `Las variables ${numero} y ${String} tienen el mismo valor, pero tipos diferentes`
+      : `Las variables ${numero} y ${String} no tienen el mismo valor`
+  );
+  // Comparar si los valores son iguales y del mismo tipo
+  console.log(
+    numero === String
+      ? `Las variables ${numero} y ${String} tienen el mismo valor y el mismo tipo`
+      : `Las variables ${numero} y ${String} no tienen el mismo tipo`
+  );
+});
+
+//fin solución b
+
 // dia 2
 
 // Función que contiene la lógica del Día 2
@@ -396,43 +429,110 @@ document
         inputPlaceholder: "Selecciona una categoría",
         inputValidator: (value) => {
           if (!value) {
-            return "¡Debes seleccionar una categoría!";
+            return "¡El nombre del alimento no puede estar vacío!"; // Validación para que el campo no esté vacío
           }
         },
-        showCancelButton: true,
       });
 
-      if (!category) continue; // Si el usuario cancela, pasa al siguiente ciclo
+      if (!foodItem) continue; // Si el usuario cancela, pasa al siguiente ciclo
 
-      switch (category) {
-        case "frutas":
-          fruits.push(foodItem);
-          break;
-        case "lácteos":
-          dairy.push(foodItem);
-          break;
-        case "congelados":
-          frozen.push(foodItem);
-          break;
-        case "dulces":
-          sweets.push(foodItem);
-          break;
-        default:
-          others.push(foodItem);
+      const { value: category } = await Swal.fire({
+        title: "¿En qué categoría se encaja?",
+        input: "select",
+        inputOptions: {
+          fruits: "Frutas",
+          dairy: "Lácteos",
+          frozen: "Congelados",
+          sweets: "Dulces",
+          others: "Otros",
+        },
+        showCancelButton: true, // Mostrar botón de cancelar
+      });
+
+      if (!categoria) break; // Si el usuario cancela, se termina el bucle
+
+      //bucle para agregar el alimento a la categoría correspondiente
+
+        switch (categoria) {
+          case "fruits":
+            fruits.push(alimento);
+            break;
+          case "dairy":
+            dairy.push(alimento);
+            break;
+          case "frozen":
+            frozen.push(alimento);
+            break;
+          case "sweets":
+            sweets.push(alimento);
+            break;
+          case "others":
+            others.push(alimento);
+            break;
+        }
+      } else if (action === "remove") {
+        const currentList = {
+          Frutas: fruits,
+          Lácteos: dairy,
+          Congelados: frozen,
+          Dulces: sweets,
+          Otros: others,
+        };
+
+        const { value: categoria } = await Swal.fire({
+          title: "Selecciona la categoría del alimento a eliminar:",
+          input: "select",
+          inputOptions: Object.keys(currentList).reduce((opts, key) => {
+            if (currentList[key].length) {
+              opts[key] = key;
+            }
+            return opts;
+          }, {}),
+          showCancelButton: true,
+          cancelButtonText: "Cancelar",
+        });
+        if (!categoria) continue;
+
+        const { value: alimento } = await Swal.fire({
+          title: `Eliminar alimento de ${categoria}`,
+          text: "Selecciona el alimento a eliminar:",
+          input: "select",
+          inputOptions: currentList[categoria],
+          showCancelButton: true,
+          cancelButtonText: "Cancelar",
+        });
+        if (!alimento) continue;
+
+        const index = currentList[categoria].indexOf(alimento);
+        if (index > -1) {
+          currentList[categoria].splice(index, 1);
+          await Swal.fire({
+            title: "¡Alimento eliminado!",
+            text: `${alimento} fue eliminado de la lista.`,
+            icon: "success",
+            confirmButtonText: "OK",
+          });
+        } else {
+          await Swal.fire({
+            title: "Error",
+            text: "¡No fue posible encontrar el alimento en la lista!",
+            icon: "error",
+            confirmButtonText: "OK",
+          });
+        }
       }
     }
 
-    let output = `
-      <h3>Lista de Compras:</h3>
-      <p>Frutas: ${fruits.join(", ")}</p>
-      <p>Lácteos: ${dairy.join(", ")}</p>
-      <p>Congelados: ${frozen.join(", ")}</p>
-      <p>Dulces: ${sweets.join(", ")}</p>
-      <p>Otros: ${others.join(", ")}</p>
-  `;
+    let output = "<h3>Lista de Compras:</h3>";
+    output += fruits.length ? `<p>Frutas: ${fruits.join(", ")}</p>` : "";
+    output += dairy.length ? `<p>Lácteos: ${dairy.join(", ")}</p>` : "";
+    output += frozen.length ? `<p>Congelados: ${frozen.join(", ")}</p>` : "";
+    output += sweets.length ? `<p>Dulces: ${sweets.join(", ")}</p>` : "";
+    output += others.length ? `<p>Otros: ${others.join(", ")}</p>` : "";
 
-    let outputContainer = document.getElementById("shopping-list-output");
+    let outputContainer = document.getElementById("shopping-list-output-dia6");
     outputContainer.innerHTML = output;
+    outputContainer.style.display = "block";
 
     await Swal.fire({
       title: "¡Lista de Compras Generada!",
@@ -440,3 +540,5 @@ document
       confirmButtonText: "OK",
     });
   });
+
+// fin de la lógica del Día 6
