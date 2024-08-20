@@ -332,9 +332,9 @@ function showGlitter() {
     particleCount: 100,
     spread: 160,
     origin: { y: 0.6 },
-    colors: ['#ffcc00', '#ff9900', '#ff6600'],
-    shapes: ['circle'], //cambiar la forma a círculo para simular glitter
-    scalar: 0.6 // Escala para hacer las partículas más pequeñas
+    colors: ["#ffcc00", "#ff9900", "#ff6600"],
+    shapes: ["circle"], //cambiar la forma a círculo para simular glitter
+    scalar: 0.6, // Escala para hacer las partículas más pequeñas
   });
 }
 
@@ -352,85 +352,63 @@ document
     let others = [];
 
     while (true) {
-      const { value: addMore } = await Swal.fire({
-        title: "¿Deseas agregar un alimento a tu lista de compras?",
-        input: "radio",
-        inputOptions: {
-          sí: "Sí",
-          no: "No",
-        },
-        inputValidator: (value) => {
-          if (!value) {
-            return "¡Necesitas elegir una opción!";
-          }
-        },
-        showCancelButton: true,
-      });
-
-      if (addMore === "no" || !addMore) break;
-
-      const { value: foodItem } = await Swal.fire({
-        title: "¿Qué alimento deseas agregar?",
+      const { value: alimento } = await Swal.fire({
+        title: "Agregar un alimento a tu lista de compras",
+        text: "Agrega el nombre de el alimento:",
         input: "text",
-        inputPlaceholder: "Ingresa el nombre del alimento",
+        icon: "question",
+        showCancelButton: true,
+        cancelButtonText: "Terminar",
+        confirmButtonText: "Agregar",
         inputValidator: (value) => {
           if (!value) {
             return "¡El nombre del alimento no puede estar vacío!";
           }
         },
-        showCancelButton: true,
       });
+      if (!alimento) break; // Si el usuario cancela, se termina el bucle
 
-      if (!foodItem) continue; // Si el usuario cancela, pasa al siguiente ciclo
-
-      const { value: category } = await Swal.fire({
-        title: "¿En qué categoría se encaja?",
+      const { value: categoria } = await Swal.fire({
+        title: "Categoria del alimento",
+        text: "Selecciona la categoria del alimento:",
         input: "select",
         inputOptions: {
-          frutas: "Frutas",
-          lácteos: "Lácteos",
-          congelados: "Congelados",
-          dulces: "Dulces",
-          otros: "Otros",
-        },
-        inputPlaceholder: "Selecciona una categoría",
-        inputValidator: (value) => {
-          if (!value) {
-            return "¡Debes seleccionar una categoría!";
-          }
+          fruits: "Frutas",
+          dairy: "Lácteos",
+          frozen: "Congelados",
+          sweets: "Dulces",
+          others: "Otros",
         },
         showCancelButton: true,
       });
 
-      if (!category) continue; // Si el usuario cancela, pasa al siguiente ciclo
+      if (!categoria) break; // Si el usuario cancela, se termina el bucle
 
-      switch (category) {
-        case "frutas":
-          fruits.push(foodItem);
+      switch (categoria) {
+        case "fruits":
+          fruits.push(alimento);
           break;
-        case "lácteos":
-          dairy.push(foodItem);
+        case "dairy":
+          dairy.push(alimento);
           break;
-        case "congelados":
-          frozen.push(foodItem);
+        case "frozen":
+          frozen.push(alimento);
           break;
-        case "dulces":
-          sweets.push(foodItem);
+        case "sweets":
+          sweets.push(alimento);
           break;
-        default:
-          others.push(foodItem);
+        case "others":
+          others.push(alimento);
+          break;
       }
     }
 
-    let output = `
-      <h3>Lista de Compras:</h3>
-      <p>Frutas: ${fruits.join(", ")}</p>
-      <p>Lácteos: ${dairy.join(", ")}</p>
-      <p>Congelados: ${frozen.join(", ")}</p>
-      <p>Dulces: ${sweets.join(", ")}</p>
-      <p>Otros: ${others.join(", ")}</p>
-  `;
-
+    let output = "<h3>Lista de Compras:</h3> ";
+    output += fruits.length ? `<p>Frutas: ${fruits.join(", ")}</p>` : "";
+    output += dairy.length ? `<p>Lácteos: ${dairy.join(", ")}</p>` : "";
+    output += frozen.length ? `<p>Congelados: ${frozen.join(", ")}</p>` : "";
+    output += sweets.length ? `<p>Dulces: ${sweets.join(", ")}</p>` : "";
+    output += others.length ? `<p>Otros: ${others.join(", ")}</p>` : "";
     let outputContainer = document.getElementById("shopping-list-output");
     outputContainer.innerHTML = output;
 
