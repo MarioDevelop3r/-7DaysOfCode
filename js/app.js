@@ -358,6 +358,7 @@ document
       // Bucle para agregar alimentos a la lista de compras
       const { value: alimento } = await Swal.fire({
         title: "Agregar un alimento a tu lista de compras",
+        width: 600,
         text: "Agrega el nombre de el alimento:",
         input: "text",
         icon: "question",
