@@ -30,6 +30,11 @@ body {
     padding: 0;
     height: 100vh;
 }
+/**/
+html {
+    scroll-behavior: smooth;
+    
+}
 
 /* Estilos para el encabezado */
 header {
