@@ -37,14 +37,19 @@ if (numeroDiez == stringDiez) {
 function toggleSolution() {
   const solution = document.getElementById("solution");
   solution.style.display = solution.style.display === "none" ? "block" : "none";
-  const button = document.getElementById("showSolution");
-  button.innerText =
-    button.innerText === "Mostrar solución"
-      ? "Mostrar solución"
-      : " Ocultar solución";
 
-  //fin mostrar solución b
+  const button = document.getElementById("showSolution");
+
+  if (solution.style.display === "block") {
+    button.innerText = "Ocultar Solución Simplificada";
+    button.style.backgroundColor = "red";
+  } else {
+    button.innerText = "Mostrar Solución Simplificada";
+    button.style.backgroundColor = ""; // Resetea el color de fondo
+  }
 }
+
+//fin mostrar solución b
 
 // constante que contiene los pares de números y strings
 const pares = [
