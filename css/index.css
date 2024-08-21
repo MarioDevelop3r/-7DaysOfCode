@@ -1,21 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
+/* Variables CSS */
+:root {
+    --font-primary: 'Roboto', sans-serif;
+    --color-bg: #1e1e1e;
+    --color-text: #d4d4d4;
+    --color-header-bg: #007acc;
+    --color-header-text: #fff;
+    --color-reto-bg: #252526;
+    --color-h2: #569cd6;
+    --color-hover-bg: #005f7f;
+    --color-output-bg: #e2e2e2;
+    --color-output-text: #333;
+    --color-list: #444;
+    --color-instructions: #555;
+    --font-size-large: 2.5rem;
+    --font-size-medium: 1.8rem;
+    --font-size-small: 1.2rem;
+    --font-size-xsmall: 1rem;
+    --font-size-xxsmall: 14px;
+}
+
 /* Configuración general */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #1e1e1e;
-    color: #d4d4d4;
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     margin: 0;
     padding: 0;
     height: 100vh;
-   
-    
 }
 
 /* Estilos para el encabezado */
 header {
-    background-color: #007acc;
-    color: #fff;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -23,7 +42,7 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: var(--font-size-large);
 }
 
 /* Estilos para el contenido principal */
@@ -35,59 +54,52 @@ main {
 
 /* Estilos para cada sección del reto */
 .reto {
-    background-color: #252526;
+    background-color: var(--color-reto-bg);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin: 30px auto;
     padding: 20px;
+    transition: box-shadow 0.5s;
 }
 
-.reto:hover{
-    transition: 0.5s;
+.reto:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
 }
- 
-
-
-
 
 .reto h2 {
-    border-bottom: 2px solid #007acc;
+    border-bottom: 2px solid var(--color-header-bg);
     padding-bottom: 10px;
     margin-bottom: 15px;
-    font-size: 1.8rem;
-    color: #569cd6;
+    font-size: var(--font-size-medium);
+    color: var(--color-h2);
 }
 
-
 .reto p, .reto li {
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
     line-height: 1.6;
-    color: #d4d4d4;
+    color: var(--color-text);
 }
 
 /* Estilos para el código */
 .reto pre {
-    background-color: #1e1e1e;
+    background-color: var(--color-bg);
     border-radius: 4px;
     padding: 15px;
-    overflow-x: auto; /* Permite el desplazamiento horizontal si es necesario */
-    font-size: 1rem;
+    overflow-x: auto; 
+    font-size: var(--font-size-xsmall);
     margin-top: 15px;
-    white-space: pre-wrap; /* Permite que las líneas largas se envuelvan */
-    word-wrap: break-word; /* Rompe las palabras largas si es necesario */
+    white-space: pre-wrap; 
+    word-wrap: break-word; 
 }
 
 .reto code {
     color: #dcdcdc;
     font-family: 'Consolas', 'Courier New', monospace;
-    display: flexbox;
 }
 
 /* Resaltado de sintaxis */
 .reto code .keyword {
-    color: #569cd6;
+    color: var(--color-h2);
 }
 
 .reto code .string {
@@ -99,47 +111,50 @@ main {
 }
 
 .reto code .operator {
-    color: #d4d4d4;
+    color: var(--color-text);
 }
-  
+
 /* Estilos para el pie de página */
 footer {
-    background-color: #007acc;
-    color: #fff;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
     text-align: center;
     padding: 10px;
     margin-top: 20px;
 }
+
 footer a {
-    color: #fff;
+    color: var(--color-header-text);
     text-decoration: none;
 }
 
 footer span {
     margin: 0;
-    font-size: 1rem;
+    font-size: var(--font-size-xsmall);
     font-weight: bold;
 }
+
 footer span:hover {
     color: #050606;
 }
 
 .reto button {
-    background-color: #007acc;
-    color: #fff;
+    background-color: var(--color-header-bg);
+    color: var(--color-header-text);
     border: none;
     padding: 10px 20px;
-    font-size: 1.2rem;
+    font-size: var(--font-size-small);
     border-radius: 4px;
     cursor: pointer;
     margin-top: 20px;
+    transition: background-color 0.3s;
 }
+
 .reto button:hover {
-    background-color: #005f7f;
+    background-color: var(--color-hover-bg);
 }
 
-
-/* glitter dia 4 */
+/* Glitter día 4 */
 #glitterCanvas {
     position: absolute;
     top: 0;
@@ -155,11 +170,9 @@ footer span:hover {
     position: absolute;
     top: 0;
     left: 0;
-  }
+}
 
-
-  /* dia 5 */
-
+/* Día 5 */
 #dia-5 .h2 {
     font-size: 24px;
     text-align: center;
@@ -167,19 +180,20 @@ footer span:hover {
     margin-bottom: 15px;
 }
 
-.intructions{
+.intructions {
     margin-bottom: 20px;
 }
 
 .intructions h3 {
     font-size: 30px;
-    color: #555;
-
+    color: var(--color-instructions);
 }
+
 .intructions ol {
     padding-left: 20px;
-    color: #444;
+    color: var(--color-list);
 }
+
 .startDia5 {
     display: block;
     margin: 0 auto;
@@ -192,26 +206,24 @@ footer span:hover {
     transition: background-color 0.3s;
 }
 
-
 .output-container {
     margin-top: 20px;
     padding: 15px;
-    background-color: #e2e2e2;
+    background-color: var(--color-output-bg);
     border-radius: 5px;
-    color: #333;
+    color: var(--color-output-text);
     font-size: 16px;
     line-height: 1.5;
 }
+
 .output-container p {
-    color:#252526
+    color: var(--color-reto-bg);
 }
-
-
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
     body {
-        font-size: 14px;
+        font-size: var(--font-size-xxsmall);
     }
 
     header h1 {
@@ -220,8 +232,8 @@ footer span:hover {
 
     .reto {
         padding: 15px;
-        
     }
+
     .reto code {
         font-size: 0.8rem;
     }
@@ -229,13 +241,12 @@ footer span:hover {
     .reto h2 {
         font-size: 1.5rem;
     }
-    li {
-        font-size: 1rem;
-    }
-    p{
+
+    li, p {
         font-size: 1rem;
     }
 }
+
 @media (max-width: 480px) {
     body {
         font-size: 12px;
@@ -252,8 +263,4 @@ footer span:hover {
     .reto h2 {
         font-size: 1rem;
     }
-    li {
-        font-size: 1rem;
-    }
 }
-
