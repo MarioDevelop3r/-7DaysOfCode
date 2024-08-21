@@ -36,7 +36,12 @@ if (numeroDiez == stringDiez) {
 // mostar solución b
 function toggleSolution() {
   const solution = document.getElementById("solution");
-  solution.style.display = solution.style.display === 'none' ? 'block' : 'none';
+  solution.style.display = solution.style.display === "none" ? "block" : "none";
+  const button = document.getElementById("showSolution");
+  button.innerText =
+    button.innerText === "Mostrar solución"
+      ? "Mostrar solución"
+      : " Ocultar solución";
 
   //fin mostrar solución b
 }
@@ -463,12 +468,11 @@ document
     });
   });
 
+//dia 6
 
-  //dia 6
+// Función que contiene la lógica del Día 6
 
-  // Función que contiene la lógica del Día 6
-
-  document
+document
   .getElementById("startDia6")
   .addEventListener("click", async function () {
     // Crear listas vacías para cada categoría
@@ -575,23 +579,48 @@ document
       switch (action) {
         case "fruits":
           if (fruits.length) await eliminarAlimento("Frutas", fruits);
-          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          else
+            await Swal.fire(
+              "No hay alimentos en esta categoría.",
+              "",
+              "warning"
+            );
           break;
         case "dairy":
           if (dairy.length) await eliminarAlimento("Lácteos", dairy);
-          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          else
+            await Swal.fire(
+              "No hay alimentos en esta categoría.",
+              "",
+              "warning"
+            );
           break;
         case "frozen":
           if (frozen.length) await eliminarAlimento("Congelados", frozen);
-          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          else
+            await Swal.fire(
+              "No hay alimentos en esta categoría.",
+              "",
+              "warning"
+            );
           break;
         case "sweets":
           if (sweets.length) await eliminarAlimento("Dulces", sweets);
-          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          else
+            await Swal.fire(
+              "No hay alimentos en esta categoría.",
+              "",
+              "warning"
+            );
           break;
         case "others":
           if (others.length) await eliminarAlimento("Otros", others);
-          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          else
+            await Swal.fire(
+              "No hay alimentos en esta categoría.",
+              "",
+              "warning"
+            );
           break;
       }
     }
@@ -613,5 +642,4 @@ document
       confirmButtonText: "OK",
     });
   });
- // fin día 6
-
+// fin día 6

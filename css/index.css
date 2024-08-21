@@ -33,7 +33,7 @@ body {
 /**/
 html {
     scroll-behavior: smooth;
-    
+
 }
 
 /* Estilos para el encabezado */
@@ -158,6 +158,7 @@ footer span:hover {
 .reto button:hover {
     background-color: var(--color-hover-bg);
 }
+
 
 /* Glitter día 4 */
 #glitterCanvas {

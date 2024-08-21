@@ -37,7 +37,7 @@ La aplicación creada es una página web que muestra los retos completados duran
 - Se desarrolló una funcionalidad para crear una lista de compras interactiva. Los usuarios pueden agregar alimentos a la lista, categorizarlos en frutas, lácteos, congelados, dulces u otros, y visualizar la lista completa al finalizar.
 
  ### Día 6
--  Se desarrolló una funcionalidad que permite al usuario crear una lista de compras utilizando SweetAlert2. Los usuarios pueden agregar alimentos, seleccionar su categoría (Frutas, Lácteos, Congelados, Dulces, Otros) y eliminar elementos de la lista. Al finalizar, se muestra la lista generada en un modal, facilitando la organización de las compras.
+-  Se desarrolló una funcionalidad que permite al usuario crear una lista de compras utilizando `SweetAlert2`. Los usuarios pueden agregar alimentos, seleccionar su categoría (Frutas, Lácteos, Congelados, Dulces, Otros) y eliminar elementos de la lista. Al finalizar, se muestra la lista generada en un modal, facilitando la organización de las compras.
 
 
 ### Día7
