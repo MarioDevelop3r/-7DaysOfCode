@@ -99,12 +99,6 @@ main {
 .reto code .operator {
     color: #d4d4d4;
 }
-#dia2 {
-    cursor: pointer;
-}
-#dia2 {
-    transition: all 0.5s ease-in-out;
-  }
   
 /* Estilos para el pie de página */
 footer {
@@ -195,9 +189,7 @@ footer span:hover {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-.startDia5:hover {
-    background-color: #0056b3;
-}
+
 
 .output-container {
     margin-top: 20px;

@@ -72,11 +72,11 @@ pares.forEach(({ numero, String }) => {
 function iniciarInteraccionDia2() {
   // Función para validar que se ingrese un número
   function validarNumero(input) {
-    return !isNaN(input) && input !== "";
+    return !isNaN(input) && input.trim() !== ""; // trim() elimina los espacios en blanco al inicio y al final
   }
 
   // Preguntas iniciales con validación
-  let nombre = prompt("¿Cuál es tu nombre?");
+  let nombre = prompt("¿Cuál es tu nombre?").trim(); // trim() elimina los espacios en blanco al inicio y al final
   if (!nombre) {
     Swal.fire(
       `Error`,
