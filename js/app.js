@@ -462,3 +462,156 @@ document
       confirmButtonText: "OK",
     });
   });
+
+
+  //dia 6
+
+  // Función que contiene la lógica del Día 6
+
+  document
+  .getElementById("startDia6")
+  .addEventListener("click", async function () {
+    // Crear listas vacías para cada categoría
+    let fruits = [];
+    let dairy = [];
+    let frozen = [];
+    let sweets = [];
+    let others = [];
+
+    while (true) {
+      // Bucle para agregar alimentos a la lista de compras
+      const { value: alimento } = await Swal.fire({
+        title: "Agregar un alimento a tu lista de compras",
+        width: 600,
+        text: "Agrega el nombre del alimento:",
+        input: "text",
+        icon: "question",
+        showCancelButton: true,
+        cancelButtonText: "Terminar",
+        confirmButtonText: "Agregar",
+        inputValidator: (value) => {
+          if (!value) {
+            return "¡El nombre del alimento no puede estar vacío!"; // Validación para que el campo no esté vacío
+          }
+        },
+      });
+      if (!alimento) break; // Si el usuario cancela, se termina el bucle
+
+      const { value: categoria } = await Swal.fire({
+        // Seleccionar la categoría del alimento
+        title: "Categoria del alimento",
+        text: "Selecciona la categoria del alimento:",
+        input: "select",
+        inputOptions: {
+          fruits: "Frutas",
+          dairy: "Lácteos",
+          frozen: "Congelados",
+          sweets: "Dulces",
+          others: "Otros",
+        },
+        showCancelButton: true, // Mostrar botón de cancelar
+      });
+
+      if (!categoria) break; // Si el usuario cancela, se termina el bucle
+
+      // Bucle para agregar el alimento a la categoría correspondiente
+      switch (categoria) {
+        case "fruits":
+          fruits.push(alimento);
+          break;
+        case "dairy":
+          dairy.push(alimento);
+          break;
+        case "frozen":
+          frozen.push(alimento);
+          break;
+        case "sweets":
+          sweets.push(alimento);
+          break;
+        case "others":
+          others.push(alimento);
+          break;
+      }
+    }
+
+    // Función para eliminar un alimento de una categoría
+    const eliminarAlimento = async (categoria, lista) => {
+      const { value: alimento } = await Swal.fire({
+        title: `Eliminar un alimento de ${categoria}`,
+        input: "select",
+        inputOptions: lista.reduce((options, item, index) => {
+          options[index] = item;
+          return options;
+        }, {}),
+        showCancelButton: true,
+        cancelButtonText: "Cancelar",
+        confirmButtonText: "Eliminar",
+      });
+
+      if (alimento !== undefined) {
+        lista.splice(alimento, 1);
+      }
+    };
+
+    // Preguntar al usuario si desea eliminar algún alimento
+    while (true) {
+      const { value: action } = await Swal.fire({
+        title: "¿Deseas eliminar algún alimento?",
+        input: "select",
+        inputOptions: {
+          no: "No, terminar",
+          fruits: "Eliminar de Frutas",
+          dairy: "Eliminar de Lácteos",
+          frozen: "Eliminar de Congelados",
+          sweets: "Eliminar de Dulces",
+          others: "Eliminar de Otros",
+        },
+        showCancelButton: false,
+        confirmButtonText: "Seleccionar",
+      });
+
+      if (action === "no") break;
+
+      switch (action) {
+        case "fruits":
+          if (fruits.length) await eliminarAlimento("Frutas", fruits);
+          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          break;
+        case "dairy":
+          if (dairy.length) await eliminarAlimento("Lácteos", dairy);
+          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          break;
+        case "frozen":
+          if (frozen.length) await eliminarAlimento("Congelados", frozen);
+          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          break;
+        case "sweets":
+          if (sweets.length) await eliminarAlimento("Dulces", sweets);
+          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          break;
+        case "others":
+          if (others.length) await eliminarAlimento("Otros", others);
+          else await Swal.fire("No hay alimentos en esta categoría.", "", "warning");
+          break;
+      }
+    }
+
+    // Generar la lista de compras
+    let output = "<h3>Lista de Compras:</h3> ";
+    output += fruits.length ? `<p>Frutas: ${fruits.join(", ")}</p>` : "";
+    output += dairy.length ? `<p>Lácteos: ${dairy.join(", ")}</p>` : "";
+    output += frozen.length ? `<p>Congelados: ${frozen.join(", ")}</p>` : "";
+    output += sweets.length ? `<p>Dulces: ${sweets.join(", ")}</p>` : "";
+    output += others.length ? `<p>Otros: ${others.join(", ")}</p>` : "";
+    let outputContainer = document.getElementById("shopping-list-output");
+    outputContainer.innerHTML = output;
+
+    // Mostrar la lista de compras en un modal
+    await Swal.fire({
+      title: "¡Lista de Compras Generada!",
+      html: output,
+      confirmButtonText: "OK",
+    });
+  });
+ // fin día 6
+

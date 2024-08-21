@@ -106,11 +106,6 @@ main {
     transition: all 0.5s ease-in-out;
   }
   
-  #dia2.active {
-    color: #007acc;
-    transform: scale(1.1rem);
-  }
-
 /* Estilos para el pie de página */
 footer {
     background-color: #007acc;

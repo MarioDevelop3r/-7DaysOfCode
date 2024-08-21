@@ -21,7 +21,7 @@
 
 
         <section class="reto">
-            <h2>Día 1:  Comparación de Valores en JavaScript: == vs ===</h2>
+            <h2>Día 1: Comparación de Valores en JavaScript: == vs ===</h2>
             <p>La tarea de hoy es reescribir el código:</p>
             <pre>
                 <code>
@@ -55,38 +55,58 @@
             </pre>
 
             <!-- mostar solución b -->
-             
+
             <button id="showSolution" onclick="toggleSolution()">Mostrar Solución Simplificada</button>
-  
+
             <pre id="solution" style="display: none;">
               <code>
+
+                //solución simplificada
+
+
+
+                // constante que contiene los pares de números y strings
           <span class="keyword">const</span> pares = [
             { <span class="keyword">numero</span>: <span class="number">1</span>, <span class="keyword">string</span>: <span class="string">"1"</span> },
             { <span class="keyword">numero</span>: <span class="number">30</span>, <span class="keyword">string</span>: <span class="string">"30"</span> },
             { <span class="keyword">numero</span>: <span class="number">10</span>, <span class="keyword">string</span>: <span class="string">"10"</span> }
           ];
+
+            // iterar sobre los pares y comparar los valores
           
           pares.<span class="keyword">forEach</span>(({ <span class="keyword">numero</span>, <span class="keyword">string</span> }) => {
             console.<span class="keyword">log</span>(
               <span class="keyword">numero</span> <span class="operator">==</span> <span class="keyword">string</span>
-                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor, pero tipos diferentes`</span>
+                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor, pero tipos diferentes`</span> 
+                // si los valores son iguales pero los tipos son diferentes
                 : <span class="string">`Las variables ${numero} y "${string}" no tienen el mismo valor`</span>
+                // si los valores no son iguales
             );
-          
-            console.<span class="keyword">log</span>(
+
+            // Comparar si los valores son iguales y del mismo tipo
+         
+            console.<span class="keyword">log</span>( 
               <span class="keyword">numero</span> <span class="operator">===</span> <span class="keyword">string</span>
-                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor y el mismo tipo`</span>
+                ? <span class="string">`Las variables ${numero} y "${string}" tienen el mismo valor y el mismo tipo`</span> // si los valores y los tipos son iguales
                 : <span class="string">`Las variables ${numero} y "${string}" no tienen el mismo tipo`</span>
+                // si los valores son iguales pero los tipos son diferentes
             );
           });
+
+          // Fin de la solución simplificada
+          
               </code>
             </pre>
 
+
             <h2>Explicación de la solución</h2>
-            <li>En el primer y tercer bloque, se utiliza == para comparar el valor independientemente del tipo, lo que
+            <li>En el primer y tercer bloque, se utiliza == para comparar el valor independientemente del tipo, lo
+                que
                 refleja que las variables tienen el mismo valor pero tipos diferentes.</li>
-            <li>En el segundo bloque, se utiliza === para comparar tanto el valor como el tipo, lo que refleja que las
+            <li>En el segundo bloque, se utiliza === para comparar tanto el valor como el tipo, lo que refleja que
+                las
                 variables tienen el mismo valor y tipo.</li>
+
 
         </section>
 
@@ -95,7 +115,7 @@
         <section class="reto">
             <h2>Día 2: Interacción con el usuario</h2>
             <p>Hoy vamos a hacer una serie de preguntas y respuestas para personalizar la experiencia del usuario:</p>
-            <p id="dia2"> Haz clic aquí para iniciar la interacción.</p>
+            <button id="dia2"> Haz clic aquí para iniciar la interacción.</button>
         </section>
 
         <!-- dia 3  -->
@@ -138,9 +158,33 @@
 
             <button id="startDia5">Iniciar desafio día 5</button>
             <div id="shopping-list-output" class="output-container" style="display: none;"></div>
-             
+
 
         </section>
+
+        <!-- fin dia 5 -->
+
+
+
+        <!-- dia 6 -->
+
+        <section class="reto" id="dia-6">
+            <h2>Día 6: Organizador Avanzado de listas de Compras</h2>
+            <p>Hoy vamos a mejorar nuestro programa anterior para que puedas eliminar alimentos de tu lista de compras.
+            </p>
+            <div class="instructions">
+                <h3>Instrucciones:</h3>
+                <ol>
+                    <li>El programa te permitirá agregar y eliminar alimentos de la lista de compras.</li>
+                    <li>Las categorías predefinidas son: Frutas, Lácteos, Congelados, Dulces, entre otras.</li>
+                    <li>Podrás eliminar un alimento ingresando su nombre exacto.</li>
+                </ol>
+            </div>
+
+            <button id="startDia6">Iniciar desafío día 6</button>
+            <div id="shopping-list-output-dia6" class="output-container" style="display: none;"></div>
+        </section>
+
 
         <!-- Secciones para los días restantes -->
 
