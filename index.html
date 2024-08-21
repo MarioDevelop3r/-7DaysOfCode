@@ -12,7 +12,20 @@
 
 <body>
     <header>
-        <h1>#7DaysOfCode</h1>
+        <div class="header-container">
+            <h1>#7DaysOfCode</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#dia-1">Día 1</a></li>
+                    <li><a href="#dia-2">Día 2</a></li>
+                    <li><a href="#dia-3">Día 3</a></li>
+                    <li><a href="#dia-4">Día 4</a></li>
+                    <li><a href="#dia-5">Día 5</a></li>
+                    <li><a href="#dia-6">Día 6</a></li>
+                    <li><a href="#dia-7">Día 7</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
 
@@ -20,7 +33,7 @@
         <!-- dia 1 -->
 
 
-        <section class="reto">
+        <section class="reto" id="dia-1">
             <h2>Día 1: Comparación de Valores en JavaScript: == vs ===</h2>
             <p>La tarea de hoy es reescribir el código:</p>
             <pre>
@@ -113,7 +126,7 @@
 
         <!-- dia 2 -->
 
-        <section class="reto">
+        <section class="reto" id="dia-2">
             <h2>Día 2: Interacción con el usuario</h2>
             <p>Hoy vamos a hacer una serie de preguntas y respuestas para personalizar la experiencia del usuario:</p>
             <button id="dia2"> Haz clic aquí</button>
@@ -187,7 +200,15 @@
         </section>
 
 
-        <!-- Secciones para los días restantes -->
+        <!-- Día 7 -->
+        <section class="reto" id="dia-7">
+            <h2>Día 7: Calculadora Interactiva</h2>
+            <p>Hoy vamos a crear una calculadora que realiza operaciones básicas utilizando funciones separadas.</p>
+            <button id="startDia7">Iniciar Calculadora</button>
+            <div id="calculator-output" class="output-container" style="display: none;"></div>
+        </section>
+
+        <!-- Fin dia 7 -->
 
     </main>
     <footer>

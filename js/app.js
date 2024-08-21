@@ -648,3 +648,88 @@ document
     });
   });
 // fin día 6
+
+// dia 7
+
+// Función que contiene la lógica del Día 7
+
+document.getElementById("startDia7").addEventListener("click", async function () {
+  let continuar = true;
+
+  while (continuar) {
+    const { value: operacion } = await Swal.fire({
+      title: "Elige una operación",
+      input: "select",
+      inputOptions: {
+        suma: "Suma",
+        resta: "Resta",
+        multiplicacion: "Multiplicación",
+        division: "División",
+        salir: "Salir"
+      },
+      showCancelButton: true,
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Seleccionar",
+    });
+
+    if (!operacion) break; // Si el usuario cancela, se termina el bucle
+    if (operacion === "salir") {
+      await Swal.fire("Hasta la próxima!");
+      break; // Terminar el bucle si el usuario elige salir
+    }
+
+    const num1 = parseFloat(await obtenerNumero("Ingresa el primer número:"));
+    const num2 = parseFloat(await obtenerNumero("Ingresa el segundo número:"));
+    let resultado;
+
+    switch (operacion) {
+      case "suma":
+        resultado = sumar(num1, num2);
+        break;
+      case "resta":
+        resultado = restar(num1, num2);
+        break;
+      case "multiplicacion":
+        resultado = multiplicar(num1, num2);
+        break;
+      case "division":
+        resultado = dividir(num1, num2);
+        break;
+    }
+
+    await Swal.fire(`El resultado es: ${resultado}`);
+  }
+});
+
+// Funciones de operaciones
+function sumar(a, b) {
+  return a + b;
+}
+
+function restar(a, b) {
+  return a - b;
+}
+
+function multiplicar(a, b) {
+  return a * b;
+}
+
+function dividir(a, b) {
+  return b !== 0 ? a / b : "Error: División por cero";
+}
+
+// Función para obtener un número mediante prompt
+async function obtenerNumero(mensaje) {
+  const { value: numero } = await Swal.fire({
+    title: mensaje,
+    input: "text",
+    inputValidator: (value) => {
+      if (isNaN(value) || value === "") {
+        return "¡Por favor, ingresa un número válido!";
+      }
+    },
+  });
+  return numero;
+}
+
+// fin día 7

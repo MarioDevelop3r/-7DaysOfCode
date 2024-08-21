@@ -45,9 +45,39 @@ header {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.header-container {
+    max-width: 1200px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor */
+}
+
 header h1 {
     margin: 0;
     font-size: var(--font-size-large);
+}
+/* Estilos de navegación */
+nav {
+    margin-top: 15px; /* Espacio entre el título y el menú de navegación */
+}
+
+.nav-links {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    padding: 0; /* Elimina el padding */
+}
+
+.nav-links li {
+    display: inline; /* Muestra los elementos de la lista en línea */
+    margin: 0 15px; /* Espacio entre los enlaces */
+}
+
+.nav-links a {
+    color: var(--color-header-text); /* Color del texto del enlace */
+    text-decoration: none; /* Elimina subrayado */
+    font-weight: bold; /* Hace el texto más grueso */
+    transition: color 0.3s; /* Transición suave para el color */
+}
+
+.nav-links a:hover {
+    color: var(--color-hover-bg); /* Color al pasar el mouse */
 }
 
 /* Estilos para el contenido principal */
@@ -231,10 +261,32 @@ footer span:hover {
     body {
         font-size: var(--font-size-xxsmall);
     }
+    header {
+        padding: 15px; /* Reduce el padding en pantallas más pequeñas */
+    }
+
+
 
     header h1 {
-        font-size: 2rem;
+        font-size: 1.8rem; /* Reduce el tamaño de la fuente */
     }
+
+    nav {
+        margin-top: 10px; /* Reduce el margen superior */
+    }
+
+    .nav-links {
+        display: flex; /* Cambia a flexbox para una mejor disposición */
+        flex-direction:row; /* Alinea los elementos en una fila */
+        align-items: center; /* Centra los elementos */
+        justify-content: center; /* Centra los elementos horizontalmente */
+
+    }
+
+    .nav-links li {
+        margin: 0 10px; /* Reduce el margen entre los elementos */
+    }
+
 
     .reto {
         padding: 15px;
@@ -257,9 +309,15 @@ footer span:hover {
     body {
         font-size: 12px;
     }
+    header {
+        padding: 10px; /* Reduce aún más el padding */
+    }
 
     header h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem; /* Tamaño de fuente más pequeño */
+    }
+    .nav-links {
+        padding: 0; /* Elimina el padding en dispositivos muy pequeños */
     }
 
     .reto {
