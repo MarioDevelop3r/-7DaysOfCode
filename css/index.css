@@ -154,23 +154,33 @@ footer {
     background-color: var(--color-header-bg);
     color: var(--color-header-text);
     text-align: center;
-    padding: 10px;
+    padding: 20px;
     margin-top: 20px;
+    border-top: 2px solid var(--color-h2); /* Línea superior */
 }
 
-footer a {
-    color: var(--color-header-text);
-    text-decoration: none;
+footer p {
+    margin: 5px 0; /* Espaciado entre párrafos */
 }
 
 footer span {
-    margin: 0;
-    font-size: var(--font-size-xsmall);
-    font-weight: bold;
+    font-weight: bold; /* Negrita para el nombre */
 }
 
-footer span:hover {
-    color: #050606;
+footer .social-links {
+    margin-top: 10px; /* Espacio entre los párrafos y los enlaces sociales */
+}
+
+footer .social-links a {
+    color: var(--color-header-text);
+    text-decoration: none;
+    margin: 0 10px; /* Espacio entre los íconos */
+    font-size: 1.5rem; /* Tamaño de los íconos */
+    transition: color 0.3s; /* Transición para el cambio de color */
+}
+
+footer .social-links a:hover {
+    color: #d4d4d4; /* Color al pasar el mouse */
 }
 
 .reto button {
@@ -235,7 +245,7 @@ footer span:hover {
     margin: 0 auto;
     padding: 10px 20px;
     color: #fff;
-    background-color: #007bff;
+    background-color: var(--color-header-bg);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -255,6 +265,9 @@ footer span:hover {
 .output-container p {
     color: var(--color-reto-bg);
 }
+
+
+
 
 /* Estilos responsivos */
 @media (max-width: 768px) {
@@ -304,6 +317,15 @@ footer span:hover {
         font-size: 1rem;
     }
 }
+footer {
+    padding: 15px; /* Reduce el padding en pantallas más pequeñas */
+}
+
+footer .social-links a {
+    margin: 0 5px; /* Reduce el espacio entre íconos */
+    font-size: 1.2rem; /* Tamaño de los íconos más pequeño */
+}
+
 
 @media (max-width: 480px) {
     body {
@@ -327,4 +349,12 @@ footer span:hover {
     .reto h2 {
         font-size: 1rem;
     }
+    footer {
+        padding: 10px; /* Padding aún más pequeño en pantallas muy pequeñas */
+    }
+
+    footer .social-links a {
+        font-size: 1rem; /* Tamaño de íconos más pequeño */
+    }
 }
+
