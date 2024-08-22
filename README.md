@@ -68,6 +68,7 @@ La aplicación creada es una página web que muestra los retos completados duran
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
   <img src="./img/D1.png" alt="Captura de Pantalla del Día 1" style="width: 100%;">
   <img src="./img/D1v2.png" alt="Captura de Pantalla del Día 1" style="width: 100%;">
+  <img src="./img/D1v3.png" alt="Captura de Pantalla del Día 1" style="width: 100%;">
   <img src="./img/D2.png" alt="Captura de Pantalla del Día 2" style="width: 100%;">
   <img src="./img/D3.png" alt="Captura de Pantalla del Día 3" style="width: 100%;">
   <img src="./img/D4.png" alt="Captura de Pantalla del Día 4" style="width: 100%;">
