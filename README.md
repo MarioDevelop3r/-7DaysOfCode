@@ -39,11 +39,8 @@ La aplicación creada es una página web que muestra los retos completados duran
  ### Día 6
 -  Se desarrolló una funcionalidad que permite al usuario crear una lista de compras utilizando `SweetAlert2`. Los usuarios pueden agregar alimentos, seleccionar su categoría (Frutas, Lácteos, Congelados, Dulces, Otros) y eliminar elementos de la lista. Al finalizar, se muestra la lista generada en un modal, facilitando la organización de las compras.
 
-
-### Día7
-
-
-- **(En desarrollo)**
+### Día 7
+- Se creó una calculadora interactiva que permite al usuario realizar operaciones básicas (suma, resta, multiplicación y división) usando `SweetAlert2`. Los usuarios pueden elegir la operación y los números, y obtener el resultado directamente en la pantalla. La calculadora también maneja la división por cero mostrando un mensaje de error si es necesario.
 
 ## Uso
 
@@ -56,11 +53,29 @@ La aplicación creada es una página web que muestra los retos completados duran
 
 3. Haz clic en el texto del Día 2 para interactuar con la aplicación y ver las funcionalidades implementadas.
 
+4. Haz clic en el botón del Día 3 para jugar al juego elige tu destino en la programación.
+
+4. Haz clic en el botón del Día 4 para jugar al juego de adivinanza de números descubre la sorpresa cuando aciertas!.
+
+5. Haz clic en el botón del Día 5 para generar y visualizar tu lista de compras interactiva.
+
+5. Haz clic en el botón del Día 6 para ingresar, borrar alimentos  y visualizar tu lista de compras interactiva avanzada.
+
+6. Haz clic en el botón del Día 7 para usar la calculadora interactiva.
+
 ## Capturas de Pantalla
 
-![Captura de Pantalla del Día 1](./img/D1.png)
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+  <img src="./img/D1.png" alt="Captura de Pantalla del Día 1" style="width: 100%;">
+  <img src="./img/D1v2.png" alt="Captura de Pantalla del Día 1" style="width: 100%;">
+  <img src="./img/D2.png" alt="Captura de Pantalla del Día 2" style="width: 100%;">
+  <img src="./img/D3.png" alt="Captura de Pantalla del Día 3" style="width: 100%;">
+  <img src="./img/D4.png" alt="Captura de Pantalla del Día 4" style="width: 100%;">
+  <img src="./img/D5.png" alt="Captura de Pantalla del Día 5" style="width: 100%;">
+  <img src="./img/D6.png" alt="Captura de Pantalla del Día 6" style="width: 100%;">
+  <img src="./img/D7.png" alt="Captura de Pantalla del Día 7" style="width: 100%;">
+</div>
 
-![Captura de Pantalla del Día 2](./img/D2.png)
 
 ## Autor
 
